@@ -6,6 +6,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+@Consumes("application/xml,application/json") //the endpoint accepts both xml and json data
+@Produces("application/xml,application/json") //the function under this endpoint can return both xml and json data
 @Path("/patientservice")
 public interface PatientService {
 

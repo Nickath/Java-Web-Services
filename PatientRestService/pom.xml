@@ -44,6 +44,24 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-jaxrs -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-xc -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-xc</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
