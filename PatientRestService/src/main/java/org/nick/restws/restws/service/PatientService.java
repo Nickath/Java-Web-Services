@@ -28,6 +28,10 @@ public interface PatientService {
     Response updatePatient(Patient patient);
 
     @Path("/patients/{id}")
+    @PUT
+    Response updatePatientId(@PathParam(value = "id") Long id, Patient patient);
+
+    @Path("/patients/{id}")
     @DELETE
     Response deletePatient(@PathParam(value = "id") Long id);
 }

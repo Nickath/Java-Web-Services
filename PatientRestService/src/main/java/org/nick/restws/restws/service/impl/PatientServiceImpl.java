@@ -56,6 +56,27 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public Response updatePatientId(Long id, Patient patient) {
+        Response response;
+        Patient patientOld = patients.get(id);
+        if(patientOld != null){
+            if(patient.getId() == 0){
+                patient.setId(id);
+            }
+            else{
+                patient.setId(id);
+            }
+            patients.put(id, patient);
+            response = Response.ok(patient).build();
+        }
+        else{
+            response = Response.notModified().build();
+        }
+        return response;
+    }
+
+
+    @Override
     public Response deletePatient(Long id) {
         Response response;
         Patient patient = patients.get(id);
@@ -68,4 +89,7 @@ public class PatientServiceImpl implements PatientService {
         }
         return response;
     }
+
+
+
 }
