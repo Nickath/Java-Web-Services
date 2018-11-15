@@ -1,8 +1,10 @@
 package org.nick.restws.restws.service.impl;
+import org.nick.restws.restws.exceptions.PatientServiceException;
 import org.nick.restws.restws.model.Patient;
 import org.nick.restws.restws.service.PatientService;
 import org.springframework.stereotype.Service;
 
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import java.util.*;
 
@@ -31,6 +33,11 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient getPatient(Long id) {
+        if(patients.get(id) == null){
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+            //alternative way
+            //throw new NotFoundException();
+        }
         return patients.get(id);
     }
 
@@ -43,21 +50,22 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Response updatePatient(Patient patient) {
-        Response response;
+        Response response = null;
         Patient patientOld = patients.get(patient.getId());
         if(patientOld != null){
             patients.put(patient.getId(), patient);
             response = Response.ok(patient).build();
         }
         else{
-            response = Response.notModified().build();
+          //  response = Response.notModified().build();
+            throw new PatientServiceException();
         }
         return response;
     }
 
     @Override
     public Response updatePatientId(Long id, Patient patient) {
-        Response response;
+        Response response = null;
         Patient patientOld = patients.get(id);
         if(patientOld != null){
             if(patient.getId() == 0){
@@ -70,7 +78,8 @@ public class PatientServiceImpl implements PatientService {
             response = Response.ok(patient).build();
         }
         else{
-            response = Response.notModified().build();
+            //response = Response.notModified().build();
+            throw new PatientServiceException();
         }
         return response;
     }
