@@ -4,6 +4,7 @@ import org.nick.restws.restws.model.Patient;
 import org.nick.restws.restws.service.PatientService;
 import org.springframework.stereotype.Service;
 
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import java.util.*;
@@ -57,8 +58,8 @@ public class PatientServiceImpl implements PatientService {
             response = Response.ok(patient).build();
         }
         else{
-          //  response = Response.notModified().build();
-            throw new PatientServiceException();
+          // response = Response.notModified(String.valueOf(patient)).build();
+           throw new PatientServiceException();
         }
         return response;
     }

@@ -17,11 +17,12 @@ public class PatientServiceExceptionMapper implements ExceptionMapper<PatientSer
 
     @Override
     public Response toResponse(PatientServiceException e) {
+        System.out.println(e.getMessage());
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         sb.append("\"Status\":\"error\"");
         sb.append(",");
-        sb.append("\"message\":\"Try again later\"");
+        sb.append("\"message\":\"Id was not found\"");
         sb.append("}");
         return Response.serverError().entity(sb.toString()).type(MediaType.APPLICATION_JSON).build();
         //return Response.status(404).build();
